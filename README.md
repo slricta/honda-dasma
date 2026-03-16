@@ -1,12 +1,6 @@
 # Honda Cars Dasmariñas
 
-This project is an updated website version for **Honda Cars Dasmariñas**.
-
-## Overview
-
-- Refreshes the current website design and layout
-- Improves page structure for a cleaner user experience
-- Keeps content easy to maintain using simple static files
+This project is an ongoing update for the **Honda Cars Dasmariñas** website.
 
 ## Project Files
 
@@ -21,6 +15,3 @@ This project is an updated website version for **Honda Cars Dasmariñas**.
 1. Download or clone this project.
 2. Open `index.html` in your browser.
 
-## Notes
-
-This is a static front-end website update and does not require a build step.

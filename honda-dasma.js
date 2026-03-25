@@ -167,9 +167,9 @@ dots.forEach(dot => {
 // Explore button
 if (exploreBtn) {
    exploreBtn.addEventListener('click', () => {
-      const collectionsSection = document.getElementById('collections');
-      if (collectionsSection) {
-         collectionsSection.scrollIntoView({ behavior: 'smooth' });
+      const vehiclesSection = document.getElementById('vehicles');
+      if (vehiclesSection) {
+         vehiclesSection.scrollIntoView({ behavior: 'smooth' });
       }
    });
 }
@@ -218,9 +218,9 @@ document.querySelectorAll('section:not(.hero)').forEach(section => {
    observer.observe(section);
 });
 
-// Video hover functionality for collection items
+// Video hover functionality for vehicle items
 document.querySelectorAll('[data-video]').forEach(item => {
-   const video = item.querySelector('.collection-video');
+   const video = item.querySelector('.vehicle-video');
    if (!video) return;
 
    item.addEventListener('mouseenter', () => {

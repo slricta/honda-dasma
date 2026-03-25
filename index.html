@@ -22,8 +22,8 @@
                 <nav class="nav-main">
                     <a href="#collections">VEHICLES</a>
                     <a href="#story">SERVICES</a>
-                    <a href="#craftsmanship">ABOUT</a>
-                    <a href="#contact" class="nav-cta">CONTACT US</a>
+                    <a href="#contact">CONTACT US</a>
+                    <a href="#about">ABOUT</a>
                 </nav>
                 
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -42,17 +42,21 @@
         <ul class="mobile-nav-links">
             <li><a href="#collections">VEHICLES</a></li>
             <li><a href="#story">SERVICES</a></li>
-            <li><a href="#craftsmanship">ABOUT</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
+            <li><a href="#about">ABOUT</a></li>
         </ul>
-        <div class="mobile-nav-cta">
-            <a href="#contact" class="btn-primary">CONTACT US</a>
-        </div>
     </nav>
     
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-image">
+                <!-- Video -->
+                <div class="hero-slide active hero-slide-video">
+                <video class="hero-video" muted playsinline autoplay preload="metadata">
+                            <source src="videos/allcars.mp4" type="video/mp4">
+                </video>
+                </div>
                 <!-- Brio -->
                 <div class="hero-slide">
                     <img src="images/samples/brio.jpg" alt="Honda Brio">
@@ -62,7 +66,7 @@
                     <img src="images/samples/brv.jpg" alt="Honda BRV">
                 </div>
                 <!-- CRV -->
-                <div class="hero-slide active">
+                <div class="hero-slide">
                     <img src="images/samples/crv.jpg" alt="Honda CR-V SUV">
                 </div>
                 <!-- City -->
@@ -92,13 +96,14 @@
                 </div>
                 
                 <div class="carousel-dots">
-                    <button class="dot active" data-slide="0" aria-label="View CR-V"></button>
-                    <button class="dot" data-slide="1" aria-label="View Civic"></button>
-                    <button class="dot" data-slide="2" aria-label="View Brio"></button>
-                    <button class="dot" data-slide="3" aria-label="View BRV"></button>
+                    <button class="dot active" data-slide="0" aria-label="View All Cars"></button>
+                    <button class="dot" data-slide="1" aria-label="View Brio"></button>
+                    <button class="dot" data-slide="2" aria-label="View BRV"></button>
+                    <button class="dot" data-slide="3" aria-label="View CR-V"></button>
                     <button class="dot" data-slide="4" aria-label="View City"></button>
                     <button class="dot" data-slide="5" aria-label="View City Hatchback"></button>
-                    <button class="dot" data-slide="6" aria-label="View HR-V"></button>
+                    <button class="dot" data-slide="6" aria-label="View Civic"></button>
+                    <button class="dot" data-slide="7" aria-label="View HR-V"></button>
                 </div>
 
                 <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous slide">
@@ -265,54 +270,6 @@
             </div>
         </div>
     </section>
-    
-    <!-- Craftsmanship -->
-    <section class="craftsmanship" id="craftsmanship">
-        <div class="container">
-            <div class="craft-grid">
-                <div class="craft-content">
-                    <p class="text-label">The Art of Creation</p>
-                    <h2 class="heading-display craft-title">
-                        Crafted by Hand, Treasured Forever
-                    </h2>
-                    <p class="text-body craft-text">
-                        Each Maison Dorée piece undergoes a meticulous journey 
-                        from concept to completion. Our artisans employ 
-                        traditional goldsmithing techniques passed down through 
-                        generations, ensuring every curve, texture, and finish 
-                        meets our exacting standards.
-                    </p>
-                    <ul class="craft-list text-body">
-                        <li>Hand-selected materials from ethical sources</li>
-                        <li>Traditional lost-wax casting and hand-forging</li>
-                        <li>Multiple quality inspections at every stage</li>
-                        <li>Personalized finishing and custom sizing</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary">Commission a Custom Piece</a>
-                </div>
-                <div class="craft-image-wrapper">
-                    <div class="craft-image">
-                        <img src="images/maison-doree-07.jpg" 
-                             alt="Jewelry craftsmanship workshop">
-                    </div>
-                    <div class="craft-stats">
-                        <div class="stat-item">
-                            <p class="stat-number">37</p>
-                            <p class="stat-label">Years of Excellence</p>
-                        </div>
-                        <div class="stat-item">
-                            <p class="stat-number">12</p>
-                            <p class="stat-label">Master Artisans</p>
-                        </div>
-                        <div class="stat-item">
-                            <p class="stat-number">8K+</p>
-                            <p class="stat-label">Pieces Created</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact -->
     <section class="contact" id="contact">
@@ -382,6 +339,54 @@
         </div>
     </section>
     
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="craft-grid">
+                <div class="craft-content">
+                    <p class="text-label">The Art of Creation</p>
+                    <h2 class="heading-display craft-title">
+                        Crafted by Hand, Treasured Forever
+                    </h2>
+                    <p class="text-body craft-text">
+                        Each Maison Dorée piece undergoes a meticulous journey 
+                        from concept to completion. Our artisans employ 
+                        traditional goldsmithing techniques passed down through 
+                        generations, ensuring every curve, texture, and finish 
+                        meets our exacting standards.
+                    </p>
+                    <ul class="craft-list text-body">
+                        <li>Hand-selected materials from ethical sources</li>
+                        <li>Traditional lost-wax casting and hand-forging</li>
+                        <li>Multiple quality inspections at every stage</li>
+                        <li>Personalized finishing and custom sizing</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary">Commission a Custom Piece</a>
+                </div>
+                <div class="craft-image-wrapper">
+                    <div class="craft-image">
+                        <img src="images/maison-doree-07.jpg" 
+                             alt="Jewelry craftsmanship workshop">
+                    </div>
+                    <div class="craft-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">37</p>
+                            <p class="stat-label">Years of Excellence</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">12</p>
+                            <p class="stat-label">Master Artisans</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">8K+</p>
+                            <p class="stat-label">Pieces Created</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
@@ -395,7 +400,7 @@
                 <div class="footer-column">
                     <h4 class="footer-column-title">About</h4>
                     <p class="footer-tagline">
-                        Honda Cars Dasmarinas is the ultimate destination for Honda enthusiasts. Discover latest releases that'll fuel your passion for Honda cars. Buckle up and join us on the road to automotive excellence, we've got you covered!
+                        Honda Cars Dasmariñas is the ultimate destination for Honda enthusiasts. Discover latest releases that'll fuel your passion for Honda cars. Buckle up and join us on the road to automotive excellence, we've got you covered!
                     </p>
                 </div>
 
@@ -432,7 +437,8 @@
             <div class="footer-bottom">
                 <p class="footer-copyright">© 2026 Honda Cars Dasmariñas. Designed by: <span>Daven H. Waay</span> • <span>Stephen Rodriguez</span></p>
                 <div class="footer-social">
-                    <a href="#">Facebook</a>
+                    <a href="https://www.facebook.com/hondacarsdasmarinas" target="_blank">Facebook</a>
+                    <a href="https://www.instagram.com/hondacarsdasmarinas/" target="_blank">Instagram</a>
                 </div>
             </div>
         </div>

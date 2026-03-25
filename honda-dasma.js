@@ -89,8 +89,19 @@ const heroDescription = document.getElementById('heroDescription');
 const carouselPrev = document.getElementById('carouselPrev');
 const carouselNext = document.getElementById('carouselNext');
 const exploreBtn = document.getElementById('exploreBtn');
+const heroVideo = document.querySelector('.hero-slide video');
 let currentSlide = 0;
-let slideInterval;
+let slideTimer;
+
+function scheduleAutoAdvance() {
+   clearTimeout(slideTimer);
+
+   if (currentSlide === 0 && heroVideo) {
+      return;
+   }
+
+   slideTimer = setTimeout(changeSlide, 5000);
+}
 
 function updateDots() {
    dots.forEach(dot => dot.classList.remove('active'));
@@ -121,10 +132,18 @@ function changeSlide(newSlide = null) {
 
    slides[currentSlide].classList.add('active');
    updateDots();
-   
-   // Reset auto-advance timer
-   clearInterval(slideInterval);
-   slideInterval = setInterval(changeSlide, 5000);
+
+   // Keep hero video in sync with the active slide.
+   if (heroVideo) {
+      if (currentSlide === 0) {
+         heroVideo.currentTime = 0;
+         heroVideo.play().catch(() => {});
+      } else {
+         heroVideo.pause();
+      }
+   }
+
+   scheduleAutoAdvance();
 }
 
 // Arrow navigation
@@ -155,7 +174,18 @@ if (exploreBtn) {
    });
 }
 
-slideInterval = setInterval(changeSlide, 5000);
+if (heroVideo) {
+   heroVideo.addEventListener('ended', () => {
+      if (currentSlide === 0) {
+         changeSlide();
+      }
+   });
+
+   heroVideo.currentTime = 0;
+   heroVideo.play().catch(() => {});
+}
+
+scheduleAutoAdvance();
 
 // Form submission
 const form = document.getElementById('appointmentForm');

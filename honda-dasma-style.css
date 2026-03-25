@@ -256,10 +256,29 @@ a {
 	opacity: 1;
 }
 
+.hero-slide-video::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	background: linear-gradient(to top, rgba(0, 0, 0, 50), rgba(0, 0, 0, 0));
+	pointer-events: none;
+	z-index: 1;
+}
+
 .hero-slide img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.hero-slide video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 1;
 }
 
 .hero-content-overlay {
@@ -450,103 +469,6 @@ a {
 	}
 }
 
-/* ========================================
-           FEATURED PIECE SECTION
-        ======================================== */
-.featured-piece {
-	padding: var(--space-2xl) 0;
-	background-color: var(--color-ivory);
-}
-
-.featured-grid {
-	display: grid;
-	grid-template-columns: 1.4fr 1fr;
-	gap: var(--space-xl);
-	align-items: center;
-}
-
-.featured-image-wrapper {
-	position: relative;
-}
-
-.featured-image {
-	aspect-ratio: 4/5;
-	overflow: hidden;
-}
-
-.featured-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform 0.8s ease;
-}
-
-.featured-image-wrapper:hover .featured-image img {
-	transform: scale(1.03);
-}
-
-.featured-badge {
-	position: absolute;
-	top: var(--space-md);
-	left: var(--space-md);
-	background-color: var(--color-gold);
-	color: var(--color-cream);
-	font-family: var(--font-body);
-	font-size: 0.7rem;
-	font-weight: 500;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	padding: 0.5rem 1rem;
-}
-
-.featured-content {
-	padding-right: var(--space-lg);
-}
-
-.featured-label {
-	margin-bottom: var(--space-sm);
-}
-
-.featured-title {
-	font-size: clamp(2.75rem, 4.5vw, 4rem);
-	margin-bottom: var(--space-md);
-}
-
-.featured-description {
-	margin-bottom: var(--space-md);
-}
-
-.featured-details {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-sm);
-	margin-bottom: var(--space-lg);
-	padding: var(--space-md) 0;
-	border-top: 1px solid var(--color-taupe-light);
-	border-bottom: 1px solid var(--color-taupe-light);
-}
-
-.detail-row {
-	display: flex;
-	justify-content: space-between;
-	font-size: 1rem;
-}
-
-.detail-label {
-	color: var(--color-taupe);
-}
-
-.detail-value {
-	font-weight: 500;
-}
-
-.featured-price {
-	font-family: var(--font-display);
-	font-size: 2.25rem;
-	font-weight: 400;
-	color: var(--color-gold-dark);
-	margin-bottom: var(--space-md);
-}
 
 /* ========================================
            VEHICLES SECTION
@@ -560,7 +482,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
-	margin-bottom: var(--space-xl);
+	margin-bottom: var(--space-lg);
 }
 
 .section-header-left {
@@ -776,9 +698,9 @@ a {
 }
 
 /* ========================================
-           CRAFTSMANSHIP SECTION
+           ABOUT SECTION
         ======================================== */
-.craftsmanship {
+.about {
 	padding: var(--space-2xl) 0;
 	background-color: var(--color-ivory);
 	overflow: hidden;
@@ -874,115 +796,7 @@ a {
 	background-color: var(--color-gold);
 }
 
-/* ========================================
-           TESTIMONIALS SECTION
-        ======================================== */
-.testimonials {
-	padding: var(--space-2xl) 0;
-	background-color: var(--color-cream);
-}
 
-.testimonials-header {
-	text-align: center;
-	margin-bottom: var(--space-xl);
-}
-
-.testimonials-title {
-	font-size: clamp(2.25rem, 3.5vw, 3rem);
-	margin-bottom: var(--space-sm);
-}
-
-.testimonials-subtitle {
-	color: var(--color-taupe);
-}
-
-.testimonials-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: var(--space-md);
-}
-
-.testimonial-card {
-	background-color: var(--color-ivory);
-	padding: var(--space-lg);
-	position: relative;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.testimonial-card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-}
-
-.testimonial-card::before {
-	content: '"';
-	position: absolute;
-	top: var(--space-sm);
-	right: var(--space-md);
-	font-family: var(--font-display);
-	font-size: 4rem;
-	line-height: 1;
-	color: var(--color-gold);
-	opacity: 0.3;
-}
-
-.testimonial-stars {
-	display: flex;
-	gap: 4px;
-	margin-bottom: var(--space-sm);
-}
-
-.testimonial-stars span {
-	color: var(--color-gold);
-	font-size: 1rem;
-}
-
-.testimonial-text {
-	font-family: var(--font-display);
-	font-size: 1.15rem;
-	font-style: italic;
-	line-height: 1.6;
-	color: var(--color-charcoal);
-	margin-bottom: var(--space-md);
-}
-
-.testimonial-author {
-	display: flex;
-	align-items: center;
-	gap: var(--space-sm);
-	padding-top: var(--space-sm);
-	border-top: 1px solid var(--color-taupe-light);
-}
-
-.testimonial-avatar {
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	overflow: hidden;
-	flex-shrink: 0;
-}
-
-.testimonial-avatar img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.testimonial-info {
-	flex: 1;
-}
-
-.testimonial-name {
-	font-family: var(--font-body);
-	font-size: 1rem;
-	font-weight: 500;
-	color: var(--color-charcoal);
-}
-
-.testimonial-detail {
-	font-size: 0.9rem;
-	color: var(--color-taupe);
-}
 
 /* ========================================
            CONTACT / VISIT SECTION
@@ -1003,7 +817,7 @@ a {
 }
 
 .contact-title {
-	font-size: clamp(2.25rem, 3.5vw, 3rem);
+	font-size: clamp(2.25rem, 4vw, 3.5rem);
 	margin-bottom: var(--space-md);
 }
 
@@ -1025,6 +839,7 @@ a {
 	text-transform: uppercase;
 	color: var(--color-red);
 	margin-bottom: var(--space-xs);
+	font-weight: bold;
 }
 
 .contact-item-value {

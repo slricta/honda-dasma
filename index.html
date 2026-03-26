@@ -21,7 +21,7 @@
                 
                 <nav class="nav-main">
                     <a href="#vehicles">VEHICLES</a>
-                    <a href="#services">SERVICES</a>
+                    <a href="#why-choose-us">WHY CHOOSE US</a>
                     <a href="#contact">CONTACT US</a>
                     <a href="#about">ABOUT</a>
                 </nav>
@@ -41,7 +41,7 @@
         <button class="mobile-nav-close" id="mobileNavClose">×</button>
         <ul class="mobile-nav-links">
             <li><a href="#vehicles">VEHICLES</a></li>
-            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#why-choose-us">WHY CHOOSE US</a></li>
             <li><a href="#contact">CONTACT US</a></li>
             <li><a href="#about">ABOUT</a></li>
         </ul>
@@ -238,40 +238,59 @@
         </div>
     </section>
     
-    <!-- Services -->
-    <section class="services" id="services">
+    <!-- WHY CHOOSE US -->
+    <section class="why-choose-us" id="why-choose-us">
         <div class="container">
-            <div class="services-grid">
-                <div class="services-content">
-                    <p class="text-label services-label">Services</p>
-                    <h2 class="heading-display services-title">
-                        Three Generations of Golden Mastery
-                    </h2>
-                    <p class="text-body services-text">
-                        Founded in 1987 by master goldsmith Henri Beaumont, 
-                        Maison Dorée has remained a family atelier dedicated to 
-                        the art of fine gold jewelry. What began in a small 
-                        workshop in the heart of the jewelry district has 
-                        blossomed into a celebrated house known for impeccable 
-                        craftsmanship.
-                    </p>
-                    <p class="text-body services-text">
-                        Today, our third-generation artisans continue the 
-                        tradition, blending time-honored techniques with 
-                        contemporary design sensibilities. Every piece that 
-                        leaves our workshop carries the weight of this legacy.
-                    </p>
-                </div>
-                <div class="services-images">
-                    <div class="services-image">
-                        <img src="images/maison-doree-05.jpg" 
-                             alt="Goldsmith at work">
+            <div class="why-choose-us-grid">
+
+                <!-- SERVICES -->
+                <div class="why-choose-us-column">
+                    <h3 class="why-choose-us-column-title">Services</h3>
+                    <div class="why-choose-us-column-image">
+                        <img src="images/service.jpg" alt="Services">
                     </div>
-                    <div class="services-image">
-                        <img src="images/maison-doree-06.jpg" 
-                             alt="Jewelry crafting detail">
-                    </div>
+                    <p class="why-choose-us-column-text">
+                        Honda Cars Dasmariñas offer services such as General Repairs, Preventive Maintenance and Body Repair.
+                    </p>
+                    <a href="services.html" class="why-choose-us-read-more">Read More</a>
                 </div>
+
+                <!-- TECHNOLOGY -->
+                <div class="why-choose-us-column">
+                    <h3 class="why-choose-us-column-title">Technology</h3>
+                    <div class="why-choose-us-column-image">
+                        <img src="images/technology.jpg" alt="Technology">
+                    </div>
+                    <p class="why-choose-us-column-text">
+                        Honda’s advanced automobile technologies towards a healthier environment and safety for everyone.
+                    </p>
+                    <a href="technology.html" class="why-choose-us-read-more">Read More</a>
+                </div>
+
+                <!-- FACILITIES -->
+                <div class="why-choose-us-column">
+                    <h3 class="why-choose-us-column-title">Facilities</h3>
+                    <div class="why-choose-us-column-image">
+                        <img src="images/hondafront.jpg" alt="Facilities">
+                    </div>
+                    <p class="why-choose-us-column-text">
+                        Amenities and entertainment for customer's convenience and comfort. Enjoy a relaxing experience while we take care of your vehicle.
+                    </p>
+                    <a href="facilities.html" class="why-choose-us-read-more">Read More</a>
+                </div>
+
+                <!-- CAREERS -->
+                <div class="why-choose-us-column">
+                    <h3 class="why-choose-us-column-title">Careers</h3>
+                    <div class="why-choose-us-column-image">
+                        <img src="images/careers.jpg" alt="Careers">
+                    </div>
+                    <p class="why-choose-us-column-text">
+                        Jumpstart and launch your career with Honda Cars Dasmariñas! Join our team and embark on an exciting journey in the automotive industry.
+                    </p>
+                    <a href="careers.html" class="why-choose-us-read-more">Read More</a>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -323,7 +342,7 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <h3 class="form-title">Contact Us</h3>
+                    <h3 class="form-title">Send us a message</h3>
                     <form id="appointmentForm">
                         <div class="form-group">
                             <label class="form-label" for="name">Full Name</label>
@@ -338,11 +357,20 @@
                             <input type="tel" id="phone" name="phone" class="form-input">
                         </div>
                         <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <select name="subject" id="subject" class="form-input">
+                                <option value="service">Service</option>
+                                <option value="sales">Sales</option>
+                                <option value="parts">Parts</option>
+                                <option value="career">Career</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label class="form-label" for="message">Your Message</label>
                             <textarea id="message" name="message" class="form-textarea" 
                                 placeholder="Tell us about your inquiry or feedback..."></textarea>
                         </div>
-                        <button type="submit" class="form-submit">Send Message</button>
+                        <button type="submit" class="form-submit">Send</button>
                     </form>
                 </div>
             </div>
@@ -357,7 +385,7 @@
                 <div class="about-image-wrapper">
                     <div class="about-image">
                         <img src="images/hondafront.jpg" 
-                             alt="Jewelry craftsmanship workshop">
+                             alt="Honda Cars Dasmariñas Front View">
                     </div>
                 </div>
 
@@ -419,8 +447,9 @@
                     <ul class="footer-links">
                         <li><a href="#vehicles">Vehicles</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-choose-us">Why Choose Us</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
                 
@@ -429,7 +458,7 @@
             
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 Honda Cars Dasmariñas <br> Designed by: <span>Daven H. Waay</span> • <span>Stephen Rodriguez</span></p>
+                <p class="footer-copyright">© 2026 Honda Cars Dasmariñas <br> Designed by: <span>Stephen Rodriguez</span> • <span>Daven H. Waay</span></p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/hondacarsdasmarinas" target="_blank">Facebook</a>
                     <a href="https://www.instagram.com/hondacarsdasmarinas/" target="_blank">Instagram</a>

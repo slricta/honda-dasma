@@ -81,6 +81,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    });
 });
 
+// Highlight nav links based on the section in view.
+const sectionNavLinks = document.querySelectorAll('.nav-main a[href^="#"], .mobile-nav-links a[href^="#"]');
+const trackedSectionIds = [...new Set([...sectionNavLinks]
+   .map(link => link.getAttribute('href'))
+   .filter(href => href && href !== '#'))];
+const trackedSections = trackedSectionIds
+   .map(id => document.querySelector(id))
+   .filter(Boolean);
+
+function setActiveNavLink(activeId) {
+   sectionNavLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === activeId;
+      link.classList.toggle('active', isActive);
+
+      if (isActive) {
+         link.setAttribute('aria-current', 'page');
+      } else {
+         link.removeAttribute('aria-current');
+      }
+   });
+}
+
+function updateActiveNavOnScroll() {
+   if (!trackedSections.length) return;
+
+   const headerHeight = header ? header.offsetHeight : 0;
+   const scrollPosition = window.scrollY + headerHeight + 120;
+   let activeId = null;
+
+   trackedSections.forEach((section) => {
+      if (scrollPosition >= section.offsetTop) {
+         activeId = `#${section.id}`;
+      }
+   });
+
+   if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      activeId = `#${trackedSections[trackedSections.length - 1].id}`;
+   }
+
+   setActiveNavLink(activeId);
+}
+
+window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
+window.addEventListener('resize', updateActiveNavOnScroll);
+window.addEventListener('load', updateActiveNavOnScroll);
+updateActiveNavOnScroll();
+
 // Hero image slideshow
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.dot');

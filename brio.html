@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers - Honda Cars Dasmariñas</title>
+    <title>Brio - Honda Cars Dasmariñas</title>
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,86 +46,53 @@
             <li><a href="index.html#about">ABOUT</a></li>
         </ul>
     </nav>
-    
-    <!-- Careers -->
-    <section class="careers" id="careers">
-        <div class="container">
-            <div class="careers-top-nav">
-                <a href="index.html#why-choose-us" class="careers-back-link" aria-label="Back to home page">Back</a>
-            </div>
-            <div class="careers-grid">
 
-                <div class="careers-content">
-                    <div class="careers-copy">
-                        <h2 class="heading-display careers-title">
-                            <span class="highlight">Careers</span>
-                        </h2>
-                        <div class="careers-divider" aria-hidden="true"></div>
-                        <p class="text-body careers-text">
-                            Interested in joining Honda Cars Dasmariñas?
-                            Browse current openings below and send your application through the
-                            contact details listed in each post.
-                        </p>
-                    </div>
+    <!-- Hero Section -->
+    <section class="hero vehicle-hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-image">
 
-                    <div class="careers-listings" aria-label="Career listings">
-                        <h3 class="careers-listings-title">Current Openings</h3>
-                        <p class="careers-empty-state">
-                            No career opportunities available at the moment. Please check back later.
-                        </p>
-
-                        <!--
-                            EDITOR GUIDE:
-                            1) Keep this section title as "Current Openings".
-                            2) When a job opens, comment out the empty-state text above.
-                            3) Duplicate the job-card block below for each new opening.
-                        -->
-
-                        <!-- Job Card Template -->
-                         <!-- Remove template tag when adding actual job cards -->
-                        <template>
-                        <article class="job-card">
-                            <p class="job-line"><span class="job-label">POSITION:</span> Position Title </p>
-                            <p class="job-line"><span class="job-label">DEPARTMENT:</span> Department Name</p>
-
-                            <!-- Job Description -->
-                            <p class="job-description"><span class="job-section-label">JOB DESCRIPTION:</span></p>
-                            <ul class="job-details">
-                                <li>Job description goes here</li>
-                                <li>Job description continues here</li>
-                                <li>Job description continues here</li>
-                                <!-- Add more job details as needed -->
-                            </ul>
-
-                            <!-- Qualifications -->
-                            <p class="job-description"><span class="job-section-label">QUALIFICATIONS:</span></p>
-                            <ul class="job-details">
-                                <li>Qualifications go here</li>
-                                <li>Qualifications continue here</li>
-                                <li>Qualifications continue here</li>
-                                <!-- Add more qualifications as needed -->
-                            </ul>
-                            
-                            <p class="job-apply">
-                                <span class="job-section-label">Interested applicants can submit their resume at our physical site/branch:</span>
-                                Honda Cars Dasmariñas, Km. 28 Gen. E. Aguinaldo Hi-Way, Salitran, Dasmariñas, Cavite
-                            </p>
-                            <p class="job-apply">
-                                <span class="job-section-label">or send a message at</span>
-                                Email: <a href="mailto:crd@hondacavite.com">crd@hondacavite.com</a><br>
-                                Number: 09190801438
-                            </p>
-                        </article>
-                       </template>
-
-                    </div>
+                <!-- Video -->
+                <div class="hero-slide active hero-slide-video">
+                <video class="hero-video" muted playsinline autoplay preload="metadata">
+                            <source src="videos/brio.mp4" type="video/mp4">
+                </video>
                 </div>
+
+                <div class="hero-slide">
+                    <img src="images/cars/brio/brio.jpg" alt="Honda Brio">
+                </div>
+
+            
+                <!-- Carousel Arrows -->
+                <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Previous slide">
+                    <span class="carousel-arrow-icon" aria-hidden="true">&#8249;</span>
+                </button>
+                <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Next slide">
+                    <span class="carousel-arrow-icon" aria-hidden="true">&#8250;</span>
+                </button>
             </div>
         </div>
     </section>
 
+    <section class="vehicle-subnav" aria-label="Brio quick navigation">
+        <div class="container vehicle-subnav-inner">
+            <a href="#hero" class="vehicle-subnav-back" aria-label="Back to top">
+            <div class="vehicle-subnav-brand">
+                <img src="images/cars/brio/brio-logo.png" alt="Brio logo">
+            </div>
+            </a>
+            <nav class="vehicle-subnav-links" aria-label="Brio sections">
+                <a href="#design">DESIGN</a>
+                <a href="#performance">PERFORMANCE</a>
+                <a href="#safety">SAFETY</a>
+            </nav>
+        </div>
+    </section>
 
-    <!-- Footer -->
+
+
+       <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
@@ -168,13 +135,12 @@
                         <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
-                
-                
             </div>
             
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 Honda Cars Dasmariñas <br> Designed by: <span>Stephen Rodriguez</span> • <span>Daven H. Waay</span></p>
+                <p class="footer-copyright">© 2026 Honda Cars Dasmariñas <br> Designed by: <span>Stephen Rodriguez
+                </span> • <span>Daven H. Waay</span></p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/hondacarsdasmarinas" target="_blank">Facebook</a>
                     <a href="https://www.instagram.com/hondacarsdasmarinas/" target="_blank">Instagram</a>

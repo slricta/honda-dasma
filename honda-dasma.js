@@ -128,128 +128,190 @@ window.addEventListener('resize', updateActiveNavOnScroll);
 window.addEventListener('load', updateActiveNavOnScroll);
 updateActiveNavOnScroll();
 
-// Hero image slideshow
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.dot');
-const heroTitle = document.getElementById('heroTitle');
-const heroDescription = document.getElementById('heroDescription');
-const carouselPrev = document.getElementById('carouselPrev');
-const carouselNext = document.getElementById('carouselNext');
-const exploreBtn = document.getElementById('exploreBtn');
-const heroVideo = document.querySelector('.hero-slide video');
-const heroSlideImages = document.querySelectorAll('.hero-slide img');
+// Reusable hero slideshow initializer (works for home and individual vehicle pages)
 const mobileHeroImageFolder = 'images/samples/mobile';
 const mobileHeroMediaQuery = window.matchMedia('(max-width: 768px)');
-let currentSlide = 0;
-let slideTimer;
 
 function getMobileHeroImageSrc(desktopSrc) {
+   if (!desktopSrc) {
+      return desktopSrc;
+   }
+
    const filename = desktopSrc.split('/').pop();
    if (!filename) {
       return desktopSrc;
    }
 
    const extensionIndex = filename.lastIndexOf('.');
-   if (extensionIndex === -1) {
-      return `${mobileHeroImageFolder}/${filename}-mobile`;
+   const hasExtension = extensionIndex !== -1;
+   const baseName = hasExtension ? filename.slice(0, extensionIndex) : filename;
+   const extension = hasExtension ? filename.slice(extensionIndex) : '';
+
+   // Home page pattern: images/samples/<name>.jpg -> images/samples/mobile/<name>-mobile.jpg
+   if (desktopSrc.includes('images/samples/')) {
+      return `${mobileHeroImageFolder}/${baseName}-mobile${extension}`;
    }
 
-   const baseName = filename.slice(0, extensionIndex);
-   const extension = filename.slice(extensionIndex);
-   return `${mobileHeroImageFolder}/${baseName}-mobile${extension}`;
+   // Vehicle page pattern: images/cars/<model>/<name>.jpg -> images/cars/<model>/<name>-mobile.jpg
+   if (desktopSrc.includes('images/cars/')) {
+      return desktopSrc.replace(filename, `${baseName}-mobile${extension}`);
+   }
+
+   return desktopSrc;
 }
 
-function syncHeroImagesForViewport() {
-   const useMobileHeroImage = mobileHeroMediaQuery.matches;
+function initHeroSlideshows() {
+   const heroSections = document.querySelectorAll('.hero');
+   if (!heroSections.length) return;
 
-   heroSlideImages.forEach((img) => {
-      if (!img.dataset.desktopSrc) {
-         img.dataset.desktopSrc = img.getAttribute('src');
+   heroSections.forEach((heroSection) => {
+      const slides = [...heroSection.querySelectorAll('.hero-slide')];
+      if (!slides.length) return;
+
+      const dots = [...heroSection.querySelectorAll('.dot')];
+      const heroTitle = heroSection.querySelector('[data-hero-title], #heroTitle, .hero-model-title');
+      const heroDescription = heroSection.querySelector('[data-hero-description], #heroDescription, .hero-model-description');
+      const carouselPrev = heroSection.querySelector('.carousel-prev');
+      const carouselNext = heroSection.querySelector('.carousel-next');
+      const heroSlideImages = heroSection.querySelectorAll('.hero-slide img');
+      const slideVideos = slides
+         .map((slide) => slide.querySelector('video'))
+         .filter(Boolean);
+
+      let currentSlide = slides.findIndex((slide) => slide.classList.contains('active'));
+      if (currentSlide < 0) currentSlide = 0;
+      let slideTimer;
+
+      function syncHeroImagesForViewport() {
+         const useMobileHeroImage = mobileHeroMediaQuery.matches;
+
+         heroSlideImages.forEach((img) => {
+            if (!img.dataset.desktopSrc) {
+               img.dataset.desktopSrc = img.getAttribute('src');
+            }
+
+            if (useMobileHeroImage) {
+               if (!img.dataset.mobileSrc) {
+                  // Optional override for custom mobile file names per slide.
+                  const customMobileSrc = img.getAttribute('data-mobile-src');
+                  img.dataset.mobileSrc = customMobileSrc || getMobileHeroImageSrc(img.dataset.desktopSrc);
+               }
+
+               if (img.dataset.mobileSrc !== img.dataset.desktopSrc && !img.dataset.mobileFallbackBound) {
+                  img.addEventListener('error', () => {
+                     img.setAttribute('src', img.dataset.desktopSrc || img.getAttribute('src'));
+                  });
+                  img.dataset.mobileFallbackBound = 'true';
+               }
+
+               img.setAttribute('src', img.dataset.mobileSrc);
+            } else {
+               img.setAttribute('src', img.dataset.desktopSrc);
+            }
+         });
       }
 
-      if (useMobileHeroImage) {
-         if (!img.dataset.mobileSrc) {
-            img.dataset.mobileSrc = getMobileHeroImageSrc(img.dataset.desktopSrc);
-         }
-         img.setAttribute('src', img.dataset.mobileSrc);
-      } else {
-         img.setAttribute('src', img.dataset.desktopSrc);
+      function updateDots() {
+         if (!dots.length) return;
+         dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+         });
       }
+
+      function updateHeroText() {
+         if (!heroTitle && !heroDescription) return;
+
+         const activeSlide = slides[currentSlide];
+         const nextTitle = activeSlide?.dataset?.title || '';
+         const nextDescription = activeSlide?.dataset?.description || '';
+
+         if (heroTitle) heroTitle.textContent = nextTitle;
+         if (heroDescription) heroDescription.textContent = nextDescription;
+      }
+
+      function syncSlideVideos() {
+         slideVideos.forEach((video) => {
+            const parentSlide = video.closest('.hero-slide');
+            const isActive = parentSlide && parentSlide.classList.contains('active');
+
+            if (isActive) {
+               video.currentTime = 0;
+               video.play().catch(() => {});
+            } else {
+               video.pause();
+            }
+         });
+      }
+
+      function scheduleAutoAdvance() {
+         clearTimeout(slideTimer);
+         if (slides.length <= 1) return;
+
+         const activeSlide = slides[currentSlide];
+         const activeVideo = activeSlide.querySelector('video');
+         // Let video slides advance on the video's ended event.
+         if (activeVideo) return;
+
+         slideTimer = setTimeout(() => {
+            changeSlide();
+         }, 5000);
+      }
+
+      function changeSlide(nextIndex = null) {
+         const previousSlide = currentSlide;
+         currentSlide = nextIndex === null
+            ? (currentSlide + 1) % slides.length
+            : (nextIndex + slides.length) % slides.length;
+
+         slides[previousSlide].classList.remove('active');
+         slides[currentSlide].classList.add('active');
+
+         updateDots();
+         updateHeroText();
+         syncSlideVideos();
+         scheduleAutoAdvance();
+      }
+
+      carouselPrev?.addEventListener('click', () => {
+         changeSlide(currentSlide - 1);
+      });
+
+      carouselNext?.addEventListener('click', () => {
+         changeSlide();
+      });
+
+      dots.forEach((dot, index) => {
+         dot.addEventListener('click', () => {
+            const dotIndex = Number.isNaN(parseInt(dot.dataset.slide, 10))
+               ? index
+               : parseInt(dot.dataset.slide, 10);
+            changeSlide(dotIndex);
+         });
+      });
+
+      slideVideos.forEach((video) => {
+         video.addEventListener('ended', () => {
+            const activeSlide = slides[currentSlide];
+            if (activeSlide && activeSlide.contains(video)) {
+               changeSlide();
+            }
+         });
+      });
+
+      updateDots();
+      updateHeroText();
+      syncHeroImagesForViewport();
+      syncSlideVideos();
+      scheduleAutoAdvance();
+
+      mobileHeroMediaQuery.addEventListener('change', syncHeroImagesForViewport);
    });
 }
 
-function scheduleAutoAdvance() {
-   clearTimeout(slideTimer);
-
-   if (currentSlide === 0 && heroVideo) {
-      return;
-   }
-
-   slideTimer = setTimeout(changeSlide, 5000);
-}
-
-function updateDots() {
-   dots.forEach(dot => dot.classList.remove('active'));
-   dots[currentSlide].classList.add('active');
-}
-
-function changeSlide(newSlide = null) {
-   const previousSlide = currentSlide;
-
-   if (newSlide !== null) {
-      currentSlide = newSlide;
-   } else {
-      currentSlide = (currentSlide + 1) % slides.length;
-   }
-
-   slides[previousSlide].classList.remove('active');
-
-   // Fade out text
-   heroTitle.style.opacity = '0';
-   heroDescription.style.opacity = '0';
-
-   setTimeout(() => {
-      heroTitle.textContent = slides[currentSlide].dataset.title;
-      heroDescription.textContent = slides[currentSlide].dataset.description;
-      heroTitle.style.opacity = '1';
-      heroDescription.style.opacity = '1';
-   }, 500);
-
-   slides[currentSlide].classList.add('active');
-   updateDots();
-
-   // Keep hero video in sync with the active slide.
-   if (heroVideo) {
-      if (currentSlide === 0) {
-         heroVideo.currentTime = 0;
-         heroVideo.play().catch(() => {});
-      } else {
-         heroVideo.pause();
-      }
-   }
-
-   scheduleAutoAdvance();
-}
-
-// Arrow navigation
-carouselPrev.addEventListener('click', () => {
-   const targetSlide = (currentSlide - 1 + slides.length) % slides.length;
-   changeSlide(targetSlide);
-});
-
-carouselNext.addEventListener('click', () => {
-   changeSlide();
-});
-
-// Dot navigation
-dots.forEach(dot => {
-   dot.addEventListener('click', () => {
-      const slideIndex = parseInt(dot.dataset.slide);
-      changeSlide(slideIndex);
-   });
-});
+initHeroSlideshows();
 
 // Explore button
+const exploreBtn = document.getElementById('exploreBtn');
 if (exploreBtn) {
    exploreBtn.addEventListener('click', () => {
       const vehiclesSection = document.getElementById('vehicles');
@@ -259,29 +321,15 @@ if (exploreBtn) {
    });
 }
 
-if (heroVideo) {
-   heroVideo.addEventListener('ended', () => {
-      if (currentSlide === 0) {
-         changeSlide();
-      }
-   });
-
-   heroVideo.currentTime = 0;
-   heroVideo.play().catch(() => {});
-}
-
-syncHeroImagesForViewport();
-mobileHeroMediaQuery.addEventListener('change', syncHeroImagesForViewport);
-
-scheduleAutoAdvance();
-
 // Form submission
 const form = document.getElementById('appointmentForm');
-form.addEventListener('submit', function (e) {
-   e.preventDefault();
-   alert('Thank you for your inquiry! We will contact you within 24 hours to confirm your appointment.');
-   form.reset();
-});
+if (form) {
+   form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for your inquiry! We will contact you within 24 hours to confirm your appointment.');
+      form.reset();
+   });
+}
 
 // Intersection Observer for scroll animations
 const observerOptions = {

@@ -284,6 +284,55 @@ a {
 	opacity: 1;
 }
 
+.vehicle-hero {
+	height: clamp(420px, calc(100dvh - var(--header-height, 96px) - 96px), 760px);
+	min-height: 420px;
+	max-height: 760px;
+}
+
+.vehicle-subnav {
+	background: var(--color-black);	
+}
+
+.vehicle-subnav-inner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	min-height: 84px;
+	gap: var(--space-md);
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.vehicle-subnav-brand img {
+	max-height: clamp(36px, 4.2vw, 64px);
+	width: auto;
+	display: block;
+}
+
+.vehicle-subnav-links {
+	display: flex;
+	align-items: center;
+	gap: clamp(1rem, 2.6vw, 2.5rem);
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.vehicle-subnav-links a {
+	font-family: var(--font-body);
+	font-size: clamp(0.9rem, 1.4vw, 1rem);
+	font-weight: 500;
+	color: var(--color-white);
+	padding: 0.35rem 0;
+	transition: color 0.25s ease;
+	white-space: nowrap;
+}
+
+.vehicle-subnav-links a:hover {
+	color: var(--color-red);
+}
+
 .hero-content-overlay {
 	position: absolute;
 	bottom: 80px;
@@ -2264,4 +2313,86 @@ font-size: 0.95rem;
 .mobile-overlay.active {
 	opacity: 1;
 	visibility: visible;
+}
+
+@media (max-width: 900px) {
+	.vehicle-hero {
+		height: clamp(380px, 68svh, 520px);
+		min-height: 380px;
+	}
+
+	.vehicle-subnav-inner {
+		min-height: 72px;
+		gap: var(--space-sm);
+	}
+
+	.vehicle-subnav-brand img {
+		max-height: 30px;
+	}
+
+	.vehicle-subnav-links {
+		gap: 1rem;
+	}
+
+	.vehicle-subnav-links a {
+		font-size: 0.88rem;
+	}
+
+	.vehicle-hero .carousel-arrow {
+		width: 40px;
+		height: 52px;
+	}
+
+	.vehicle-hero .carousel-arrow-icon {
+		font-size: 2.1rem;
+		transform: translateY(-2px);
+	}
+}
+
+@media (max-width: 640px) {
+	.vehicle-hero {
+		height: calc(100svh - var(--header-height, 96px));
+		min-height: 520px;
+	}
+
+	.vehicle-subnav-inner {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding-top: 0.65rem;
+		padding-bottom: 0.65rem;
+		min-height: 0;
+	}
+
+	.vehicle-subnav-links {
+		width: auto;
+		overflow-x: visible;
+		padding-bottom: 0.15rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.85rem;
+	}
+
+	.vehicle-hero .carousel-arrow {
+		width: 36px;
+		height: 46px;
+	}
+
+	.vehicle-hero .carousel-arrow-icon {
+		font-size: 1.8rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.vehicle-subnav-brand img {
+		max-height: 24px;
+	}
+
+	.vehicle-subnav-links a {
+		font-size: 0.82rem;
+	}
+
+	.vehicle-subnav-links {
+		gap: 0.7rem;
+	}
 }

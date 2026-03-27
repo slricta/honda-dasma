@@ -20,10 +20,10 @@
                 <a href="#" class="logo"><img src="images/logo.png" alt="Honda Logo"></a>
                 
                 <nav class="nav-main">
-                    <a href="#vehicles">VEHICLES</a>
-                    <a href="#why-choose-us">WHY CHOOSE US</a>
-                    <a href="#contact">CONTACT US</a>
-                    <a href="#about">ABOUT</a>
+                    <a href="index.html#vehicles">VEHICLES</a>
+                    <a href="index.html#why-choose-us">WHY CHOOSE US</a>
+                    <a href="index.html#contact">CONTACT US</a>
+                    <a href="index.html#about">ABOUT</a>
                 </nav>
                 
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -40,40 +40,85 @@
     <nav class="mobile-nav" id="mobileNav">
         <button class="mobile-nav-close" id="mobileNavClose">×</button>
         <ul class="mobile-nav-links">
-            <li><a href="#vehicles">VEHICLES</a></li>
-            <li><a href="#why-choose-us">WHY CHOOSE US</a></li>
-            <li><a href="#contact">CONTACT US</a></li>
-            <li><a href="#about">ABOUT</a></li>
+            <li><a href="index.html#vehicles">VEHICLES</a></li>
+            <li><a href="index.html#why-choose-us">WHY CHOOSE US</a></li>
+            <li><a href="index.html#contact">CONTACT US</a></li>
+            <li><a href="index.html#about">ABOUT</a></li>
         </ul>
     </nav>
     
-    <!-- Services -->
-    <section class="services" id="services">
+    <!-- Careers -->
+    <section class="careers" id="careers">
         <div class="container">
-            <div class="services-grid">
+            <div class="careers-top-nav">
+                <a href="index.html#why-choose-us" class="careers-back-link" aria-label="Back to home page">Back</a>
+            </div>
+            <div class="careers-grid">
 
-                <div class="services-image-wrapper">
-                    <div class="services-image">
-                        <img src="images/hondafront.jpg" 
-                             alt="Jewelry craftsmanship workshop">
+                <div class="careers-content">
+                    <div class="careers-copy">
+                        <h2 class="heading-display careers-title">
+                            <span class="highlight">Careers</span>
+                        </h2>
+                        <div class="careers-divider" aria-hidden="true"></div>
+                        <p class="text-body careers-text">
+                            Interested in joining Honda Cars Dasmariñas?
+                            Browse current openings below and send your application through the
+                            contact details listed in each post.
+                        </p>
                     </div>
-                </div>
 
-                <div class="services-content">
-                    <h2 class="heading-display services-title">
-                        Honda Cars Dasmariñas
-                    </h2>
-                    <p class="text-body about-text">
-                        On June 19, 2008 , Honda Cars Dasmarinas (HCCV) proudly
-                        opened its doors to the residents of Cavite, marking a
-                        significant milestone in Honda's mission to provide unparalleled 
-                        products and services directly to its valued customers. As 
-                        the twenty-fourth dealer to join Honda's extensive network 
-                        in the Philippines, HCCV stands as a testament to our commitment 
-                        to accessibility and excellence. 
-                        <br><br>
-                        We look forward to serving you!
-                    </p>
+                    <div class="careers-listings" aria-label="Career listings">
+                        <h3 class="careers-listings-title">Current Openings</h3>
+                        <p class="careers-empty-state">
+                            No career opportunities available at the moment. Please check back later.
+                        </p>
+
+                        <!--
+                            EDITOR GUIDE:
+                            1) Keep this section title as "Current Openings".
+                            2) When a job opens, comment out the empty-state text above.
+                            3) Duplicate the job-card block below for each new opening.
+                        -->
+
+                        <!-- Job Card Template -->
+                         <!-- Remove template tag when adding actual job cards -->
+                        <template>
+                        <article class="job-card">
+                            <p class="job-line"><span class="job-label">POSITION:</span> Position Title </p>
+                            <p class="job-line"><span class="job-label">DEPARTMENT:</span> Department Name</p>
+
+                            <!-- Job Description -->
+                            <p class="job-description"><span class="job-section-label">JOB DESCRIPTION:</span></p>
+                            <ul class="job-details">
+                                <li>Job description goes here</li>
+                                <li>Job description continues here</li>
+                                <li>Job description continues here</li>
+                                <!-- Add more job details as needed -->
+                            </ul>
+
+                            <!-- Qualifications -->
+                            <p class="job-description"><span class="job-section-label">QUALIFICATIONS:</span></p>
+                            <ul class="job-details">
+                                <li>Qualifications go here</li>
+                                <li>Qualifications continue here</li>
+                                <li>Qualifications continue here</li>
+                                <!-- Add more qualifications as needed -->
+                            </ul>
+                            
+                            <p class="job-apply">
+                                <span class="job-section-label">Interested applicants can submit their resume at our physical site/branch:</span>
+                                Honda Cars Dasmariñas, Km. 28 Gen. E. Aguinaldo Hi-Way, Salitran, Dasmariñas, Cavite
+                            </p>
+                            <p class="job-apply">
+                                <span class="job-section-label">or send a message at</span>
+                                Email: <a href="mailto:crd@hondacavite.com">crd@hondacavite.com</a><br>
+                                Number: 09190801438
+                            </p>
+                        </article>
+                       </template>
+
+                    </div>
                 </div>
             </div>
         </div>

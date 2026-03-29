@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic - Honda Cars Dasmariñas</title>
+    <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/honda-dasma-style.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Honda Logo"></a>
+                
+                <nav class="nav-main">
+                    <div class="nav-dropdown" id="vehiclesDropdown">
+                        <button class="nav-dropdown-toggle" id="vehiclesDropdownToggle" type="button" aria-expanded="false" aria-controls="vehiclesDropdownMenu">
+                            <span>VEHICLES</span>
+                            <span class="nav-dropdown-caret" aria-hidden="true"></span>
+                        </button>
+                        <div class="nav-dropdown-menu" id="vehiclesDropdownMenu" role="menu" aria-label="Vehicle models">
+                            <div class="vehicle-dropdown-grid">
+                                <a href="brio.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/brio.jpg" alt="Honda Brio">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">Brio</span>
+                                </a>
+                                <a href="city.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/city.jpg" alt="Honda City">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">City</span>
+                                </a>
+                                <a href="cityhatch.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/cityhatch.jpg" alt="Honda City Hatchback">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">City Hatchback</span>
+                                </a>
+                                <a href="civic.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/civic.jpg" alt="Honda Civic">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">Civic</span>
+                                </a>
+                                <a href="brv.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/brv.jpg" alt="Honda BR-V">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">BR-V</span>
+                                </a>
+                                <a href="hrv.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/hrv.jpg" alt="Honda HR-V">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">HR-V</span>
+                                </a>
+                                <a href="crv.html" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/crv.jpg" alt="Honda CR-V">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">CR-V</span>
+                                </a>
+                                <a href="../index.html#vehicles" class="vehicle-dropdown-card" role="menuitem">
+                                    <span class="vehicle-dropdown-image-wrap">
+                                        <img src="../images/samples/brio.jpg" alt="View all Honda models">
+                                    </span>
+                                    <span class="vehicle-dropdown-name">View All Models</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../index.html#why-choose-us">WHY CHOOSE US</a>
+                    <a href="../index.html#contact">CONTACT US</a>
+                    <a href="../index.html#about">ABOUT</a>
+                </nav>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="../index.html#vehicles">VEHICLES</a></li>
+            <li><a href="../index.html#why-choose-us">WHY CHOOSE US</a></li>
+            <li><a href="../index.html#contact">CONTACT US</a></li>
+            <li><a href="../index.html#about">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Vehicle Showcase -->
+    <section class="vehicle-showcase" aria-label="Civic showcase">
+        <div class="vehicle-showcase-media">
+            <img src="../images/cars/civic/civic.jpg" alt="Honda Civic">
+        </div>
+        <nav class="vehicle-model-nav" aria-label="Honda model navigation">
+            <a class="vehicle-model-nav-link" href="brio.html">Brio</a>
+            <a class="vehicle-model-nav-link" href="city.html">City</a>
+            <a class="vehicle-model-nav-link" href="cityhatch.html">City Hatchback</a>
+            <a class="vehicle-model-nav-link is-active" href="civic.html" aria-current="page">Civic</a>
+            <a class="vehicle-model-nav-link" href="brv.html">BR-V</a>
+            <a class="vehicle-model-nav-link" href="hrv.html">HR-V</a>
+            <a class="vehicle-model-nav-link" href="crv.html">CR-V</a>
+        </nav>
+        <div class="vehicle-showcase-title-wrap">
+            <h1 class="vehicle-showcase-title">Civic</h1>
+        </div>
+    </section>
+
+
+
+       <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1: Logo -->
+                <div class="footer-brand">
+                    <p class="footer-logo"><img src="../images/logo2.png" class="logo" alt="Honda Logo"></p>
+                </div>
+                
+                <!-- Column 2: Brand -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">About</h4>
+                    <p class="footer-tagline">
+                        Honda Cars Dasmariñas is the ultimate destination for Honda enthusiasts. Discover latest releases that'll fuel your passion for Honda cars. Buckle up and join us on the road to automotive excellence, we've got you covered!
+                    </p>
+                </div>
+
+                <!-- Column 3: Address and Contacts -->
+                <div class="footer-column footer-about">
+                    <h4 class="footer-column-title">ADDRESS AND CONTACTS</h4>
+                    <div class="footer-contact-info">
+                        <p>Km. 28 General Emilio Aguinaldo Highway Salitran II, Dasmariñas, Cavite</p>
+                        <p><span>Service:</span></p>
+                        <p>Globe: 09175137913 | Smart: 09399022128</p>
+                        <p><span>Customer Relations:</span></p>
+                        <p>Globe: 09175137917 | Smart: 09988546033</p>
+                        <p><span>Email:</span></p>
+                        <p><a href="mailto:info@hondacarsdasmarinas.com">info@hondacarsdasmarinas.com</a></p>
+                        <p><a href="mailto:crd@hondacavite.com">crd@hondacavite.com</a></p>
+                    </div>
+                </div>
+
+                <!-- Column 4: Quick Links -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#vehicles">Vehicles</a></li>
+                        <li><a href="../index.html#about">About Us</a></li>
+                        <li><a href="../index.html#why-choose-us">Why Choose Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../careers.html">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Honda Cars Dasmariñas <br> Designed by: <span>Stephen Rodriguez
+                </span> • <span>Daven H. Waay</span></p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/hondacarsdasmarinas" target="_blank">Facebook</a>
+                    <a href="https://www.instagram.com/hondacarsdasmarinas/" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/honda-dasma.js"></script>
+</body>
+</html>

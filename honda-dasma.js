@@ -36,10 +36,53 @@ const mobileNav = document.getElementById('mobileNav');
 const mobileOverlay = document.getElementById('mobileOverlay');
 const mobileNavClose = document.getElementById('mobileNavClose');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+const vehiclesDropdown = document.getElementById('vehiclesDropdown');
+const vehiclesDropdownToggle = document.getElementById('vehiclesDropdownToggle');
+const vehiclesDropdownMenu = document.getElementById('vehiclesDropdownMenu');
+
+function setVehiclesDropdownState(isOpen) {
+   if (!vehiclesDropdown || !vehiclesDropdownToggle) return;
+
+   vehiclesDropdown.classList.toggle('open', isOpen);
+   vehiclesDropdownToggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+if (vehiclesDropdown && vehiclesDropdownToggle) {
+   vehiclesDropdownToggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const shouldOpen = !vehiclesDropdown.classList.contains('open');
+      setVehiclesDropdownState(shouldOpen);
+   });
+
+   vehiclesDropdownMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+         setVehiclesDropdownState(false);
+      });
+   });
+
+   document.addEventListener('click', (event) => {
+      if (!vehiclesDropdown.contains(event.target)) {
+         setVehiclesDropdownState(false);
+      }
+   });
+
+   document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+         setVehiclesDropdownState(false);
+      }
+   });
+
+   window.addEventListener('resize', () => {
+      if (window.innerWidth <= 860) {
+         setVehiclesDropdownState(false);
+      }
+   });
+}
 
 function openMobileNav() {
    mobileNav.classList.add('active');
    mobileOverlay.classList.add('active');
+   setVehiclesDropdownState(false);
    document.body.style.overflow = 'hidden';
 }
 

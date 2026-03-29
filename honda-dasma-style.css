@@ -166,6 +166,157 @@ a {
 	gap: var(--space-lg);
 }
 
+.nav-dropdown {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.nav-dropdown-toggle {
+	font-family: var(--font-body);
+	font-size: 1.05rem;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	padding: var(--space-xs) 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown.open .nav-dropdown-toggle {
+	color: var(--color-red);
+}
+
+.nav-dropdown-caret {
+	width: 0.48rem;
+	height: 0.48rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: translateY(-1px) rotate(45deg);
+	transition: transform 0.25s ease;
+}
+
+.nav-dropdown.open .nav-dropdown-caret {
+	transform: translateY(2px) rotate(-135deg);
+}
+
+.nav-dropdown-menu {
+	position: fixed;
+	top: var(--header-height, 96px);
+	left: 0;
+	width: 100vw;
+	height: calc(100dvh - var(--header-height, 96px));
+	max-height: calc(100dvh - var(--header-height, 96px));
+	padding: 1.25rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	background-color: rgba(245, 245, 245, 0.97);
+	backdrop-filter: blur(6px);
+	box-shadow: 0 24px 45px rgba(0, 0, 0, 0.18);
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+	overflow-y: auto;
+	transform: translateY(12px);
+	transition: opacity 0.25s ease, transform 0.25s ease;
+	z-index: 1200;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.vehicle-dropdown-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-auto-rows: minmax(180px, 1fr);
+	height: 100%;
+	align-content: stretch;
+	gap: 0.8rem;
+}
+
+.vehicle-dropdown-card {
+	display: grid;
+	grid-template-rows: auto auto;
+	gap: 0.65rem;
+	padding: 0.65rem;
+	background-color: var(--color-white);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+	will-change: transform;
+	overflow: hidden;
+}
+
+.vehicle-dropdown-image-wrap {
+	position: relative;
+	aspect-ratio: 16 / 8;
+	overflow: hidden;
+	background-color: #efefef;
+}
+
+.vehicle-dropdown-image-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.35s ease;
+}
+
+.vehicle-dropdown-image-wrap::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(130deg, rgba(222, 24, 47, 0.08), rgba(222, 24, 47, 0.45));
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	pointer-events: none;
+}
+
+.vehicle-dropdown-name {
+	font-family: var(--font-body);
+	font-size: 1.05rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	line-height: 1.25;
+	color: #1a1a1a;
+	transition: color 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	min-height: 2.2rem;
+}
+
+.vehicle-dropdown-card:hover,
+.vehicle-dropdown-card:focus-visible {
+	transform: scale(1.03);
+	border-color: rgba(222, 24, 47, 0.7);
+	box-shadow: 0 16px 28px rgba(0, 0, 0, 0.16);
+	outline: none;
+}
+
+.vehicle-dropdown-card:hover .vehicle-dropdown-image-wrap img,
+.vehicle-dropdown-card:focus-visible .vehicle-dropdown-image-wrap img {
+	transform: scale(1.06);
+}
+
+.vehicle-dropdown-card:hover .vehicle-dropdown-image-wrap::after,
+.vehicle-dropdown-card:focus-visible .vehicle-dropdown-image-wrap::after {
+	opacity: 1;
+}
+
+.vehicle-dropdown-card:hover .vehicle-dropdown-name,
+.vehicle-dropdown-card:focus-visible .vehicle-dropdown-name {
+	color: var(--color-red);
+}
+
 .nav-main a:not(.nav-cta) {
 	font-family: var(--font-body);
 	font-size: 1.05rem;
@@ -282,6 +433,84 @@ a {
 	height: 100%;
 	object-fit: cover;
 	opacity: 1;
+}
+
+/* ========================================
+           VEHICLE SHOWCASE PAGES
+        ======================================== */
+.vehicle-showcase {
+	padding-top: var(--header-height, 96px);
+	background: #efefef;
+}
+
+.vehicle-showcase-media {
+	width: 100%;
+	background: linear-gradient(180deg, #e8e8e8 0%, #f4f4f4 100%);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.vehicle-showcase-media img {
+	width: 100%;
+	height: clamp(260px, 48vw, 620px);
+	object-fit: cover;
+	object-position: center;
+}
+
+.vehicle-model-nav {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0.95rem 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: clamp(0.3rem, 1.2vw, 0.8rem);
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scrollbar-width: thin;
+	background-color: #f3f3f3;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.vehicle-model-nav-link {
+	font-family: var(--font-body);
+	font-size: clamp(0.78rem, 1.35vw, 0.95rem);
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	color: #1f1f1f;
+	white-space: nowrap;
+	padding: 0.4rem 0.7rem;
+	border-radius: 999px;
+	border: 1px solid transparent;
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.vehicle-model-nav-link:hover {
+	color: var(--color-red);
+	background-color: rgba(222, 24, 47, 0.08);
+}
+
+.vehicle-model-nav-link.is-active {
+	color: var(--color-red);
+	font-weight: 700;
+	border-color: rgba(222, 24, 47, 0.45);
+	background-color: rgba(222, 24, 47, 0.12);
+}
+
+.vehicle-showcase-title-wrap {
+	padding: clamp(1.75rem, 4vw, 3rem) 1rem clamp(2.4rem, 5vw, 4rem);
+	text-align: center;
+	background-color: #f3f3f3;
+}
+
+.vehicle-showcase-title {
+	font-family: var(--font-display);
+	font-size: clamp(2.1rem, 6vw, 4.3rem);
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.01em;
+	color: var(--color-black);
+	text-transform: uppercase;
 }
 
 .vehicle-hero {
@@ -1860,8 +2089,20 @@ font-size: 0.95rem;
 		gap: var(--space-md);
 	}
 
+	.nav-dropdown-toggle {
+		font-size: 0.85rem;
+	}
+
 	.nav-main a:not(.nav-cta) {
 		font-size: 0.85rem;
+	}
+
+	.nav-dropdown-menu {
+		padding: 1rem;
+	}
+
+	.vehicle-dropdown-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
 	.nav-cta {
@@ -2350,6 +2591,24 @@ font-size: 0.95rem;
 }
 
 @media (max-width: 640px) {
+	.vehicle-showcase-media img {
+		height: clamp(220px, 54vw, 340px);
+	}
+
+	.vehicle-model-nav {
+		justify-content: flex-start;
+		padding: 0.8rem 0.65rem;
+	}
+
+	.vehicle-model-nav-link {
+		padding: 0.36rem 0.62rem;
+	}
+
+	.vehicle-showcase-title-wrap {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+
 	.vehicle-hero {
 		height: calc(100svh - var(--header-height, 96px));
 		min-height: 520px;
@@ -2384,6 +2643,14 @@ font-size: 0.95rem;
 }
 
 @media (max-width: 420px) {
+	.vehicle-model-nav {
+		gap: 0.25rem;
+	}
+
+	.vehicle-model-nav-link {
+		font-size: 0.76rem;
+	}
+
 	.vehicle-subnav-brand img {
 		max-height: 24px;
 	}
@@ -2394,5 +2661,21 @@ font-size: 0.95rem;
 
 	.vehicle-subnav-links {
 		gap: 0.7rem;
+	}
+}
+
+@media (max-width: 700px) {
+	.vehicle-dropdown-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.nav-dropdown-menu {
+		padding: 0.85rem;
+	}
+}
+
+@media (max-width: 520px) {
+	.vehicle-dropdown-grid {
+		grid-template-columns: 1fr;
 	}
 }
